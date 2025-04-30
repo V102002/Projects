@@ -13,3 +13,9 @@ To run the code, type
 python main.py 
 
 Then select the pdf file you want to convert to audio
+
+# Working
+- The user selects a file using the module tkinter
+- The PyPDF2 library read the PDF file and counts the number of pages
+- Using the extract_text() function, each page's text is extracted
+- The extracted text is converted to audio using pyttsx3 module 
