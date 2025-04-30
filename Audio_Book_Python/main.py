@@ -5,12 +5,11 @@ from tkinter.filedialog import *
 player=pyttsx3.init() #initializing
 
 try:
-    #Reading the name of the PDF
+    #Selecting the PDF
     book=askopenfilename()
 
     #Initialize with PDF reader
     pdfreader=PyPDF2.PdfReader(book)
-
 
     #Get the number of pages from the pdf
     pages=len(pdfreader.pages)
