@@ -5,8 +5,8 @@ It also uses tkinter which allows the user to select a pdf file
 
 ## Requirement
 Make sure you have the python libraries installed:
-pyttsx3  (It is a text-to-speech conversion library)
-PyPDF2   (It is a library to read and manipulate PDF files)
+- pyttsx3  (It is a text-to-speech conversion library)
+- PyPDF2   (It is a library to read and manipulate PDF files)
 
 # How to Run
 To run the code, type
