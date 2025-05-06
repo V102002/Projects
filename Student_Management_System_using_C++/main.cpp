@@ -155,7 +155,7 @@ using namespace std;
 
     cout<<"\nAll Student Records\n";
     cout<<"--------------------------------------\n";
-    while (fi>>temp_roll>>ws && fi.getline(temp_name,30,'|') && 
+    while (fi>>temp_roll>>ws && fi.getline(temp_name,30,'|') && //ws means removing whitespace
         fi.getline(temp_Pname,30,'|') && fi.getline(temp_stdn,10,'|')
         && fi>>temp_age>>ws && fi>>temp_busno>>ws){
       Roll_no = temp_roll;
@@ -167,6 +167,41 @@ using namespace std;
       showdata();
     }
     
+  }
+  void student::searchData(char* t)
+  {
+    int count=0;
+    ifstream fi("student.txt");
+    if (!fi){
+      cout<<"Error file not found:";
+      return;
+    }
+    //Same as viewAllData function, use temporary variables
+    char temp_name[30],temp_Pname[30],temp_stdn[10];
+    int temp_roll,temp_age,temp_busno;
+
+
+    while (fi>>temp_roll>>ws && fi.getline(temp_name,30,'|') && //ws means removing whitespace
+    fi.getline(temp_Pname,30,'|') && fi.getline(temp_stdn,10,'|')
+    && fi>>temp_age>>ws && fi>>temp_busno>>ws){
+      if (strcmp(t,temp_name)==0){//Find Student Name
+        Roll_no=temp_roll;
+        age=temp_age;
+        busno=temp_busno;
+        strcpy(name,temp_name);
+        strcpy(Pname,temp_Pname);
+        strcpy(stdn,temp_stdn);
+
+        showdata();
+        count++;
+      }
+    }
+
+    if (count==0){
+      cout<<"Student not Found"<<"\n";
+    }
+    
+    fi.close();
   }
 int main(){
 
