@@ -30,7 +30,7 @@ using namespace std;
       void showdata(); //Display data
       int storedata();
       void viewAlldata(); //Display all data 
-      void searchData(char *);
+      void searchDataBase(char *);
       void showsearch();
       void deleteData(char *);
       void updateData(char *);
@@ -168,7 +168,7 @@ using namespace std;
     }
     
   }
-  void student::searchData(char* t)
+  void student::searchDataBase(char* t)
   {
     int count=0;
     ifstream fi("student.txt");
@@ -202,6 +202,20 @@ using namespace std;
     }
     
     fi.close();
+  }
+  void student::showsearch()
+  {
+    cout<<"\t\t**********************************"<<"\n";
+    cout<<"\t\t*                                *"<<"\n";
+    cout<<"\t\t*      STUDENT SEARCH OPTION     *"<<"\n";
+    cout<<"\t\t**********************************"<<"\n";
+    cout<<"\t\t*                                *"<<"\n";
+
+    char search[30];
+    cout<<"Enter the Student Name:";
+    cin.ignore();
+    cin.getline(search,29);
+    searchDataBase(search);
   }
 int main(){
 
