@@ -217,6 +217,18 @@ using namespace std;
     cin.getline(search,29);
     searchDataBase(search);
   }
+  void student::deleteData(char *t)
+  {
+    ifstream fi("student.txt",ios::app);
+    ofstream fo("student.txt",ios::app);
+    if (!fi){
+      ccolor(12);
+      cout<<"Error, file not found";
+      return;
+    }
+
+    
+  }
 int main(){
 
 return 0;
