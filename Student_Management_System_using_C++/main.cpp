@@ -257,9 +257,115 @@ using namespace std;
       ccolor(12);
       cout<<"Student not found.\n";
     }
-    
+  }
+  void student::updateData(char* t){
+      ifstream fi("student.txt"); //Open the file
+      ofstream fo("temp.txt");
+      
+      if (!fi || !fo){
+        cout<<"Error file not found"<<endl;
+        return;
+      }
+      
+
+    char temp_name[30],temp_Pname[30],temp_stdn[10];
+    int temp_roll,temp_age,temp_busno;
+    bool found=false;
+
+    while (fi>>temp_roll>>ws && fi.getline(temp_name,30,'|') && //ws means removing whitespace
+    fi.getline(temp_Pname,30,'|') && fi.getline(temp_stdn,10,'|')
+    && fi>>temp_age>>ws && fi>>temp_busno>>ws){
+      if (strcmp(t,temp_name)==0){
+        found=true;
+        cout<<"Record found. Enter the updated data: "<<endl;
+        getdata();//User types new data
+
+        fo<<Roll_no<<" "
+        <<name<<"|"<<Pname<<"|"<<stdn<<"|"
+        <<age<<" "<<busno<<"\n";
+      }else{
+        fo<<temp_roll<<" "
+        <<temp_name<<"|"<<temp_Pname<<"|"<<temp_stdn<<"|"
+        <<temp_age<<" "<<temp_busno<<"\n";
+      }
+    }
+    fi.close();
+    fo.close();
+
+    if (found){
+      remove("student.txt");
+      rename("temp.txt","student.txt");
+      cout<<"Record Updated";
+    }else{
+      cout<<"Student not found";
+      remove("temp.txt");
+    }
   }
 int main(){
-
+  student s1;
+  s1.loadingBar();
+  s1.intro();
+  s1.login();
+  s1.ccolor(929);
+  int choice;
+  while (choice!=6){
+    s1.ccolor(929);
+    system("cls");
+  }
+  cout<<"*****************************************************************"<<"\n";
+    cout<<"***                                                           ***"<<"\n";
+    cout<<"***              1. Insert Student record.                    ***"<<"\n";
+    cout<<"***              2. View All Student record.                  ***"<<"\n";
+    cout<<"***              3. Search Student record.                    ***"<<"\n";
+    cout<<"***              4. Delete Student record.                    ***"<<"\n";
+    cout<<"***              5. Update Student record.                    ***"<<"\n";
+    cout<<"***              6. For Exit The Program.                     ***"<<"\n";
+    cout<<"***                                                           ***"<<"\n";
+    cout<<"*****************************************************************"<<"\n";
+    cout<<"\n        Enter Your choice:";
+    cin>>choice;
+    switch(choice)
+    {
+    case 1:
+        s1.getdata();
+        s1.storedata();
+        cout<<"\n\t\t Data is Successfully Stored:";
+        getch();
+        break;
+    case 2:
+        s1.viewAlldata();
+        getch();
+        break;
+    case 3:
+        s1.showsearch();
+        getch();
+        break;
+    case 4:
+        cout<<"\n\n Enter Student Name to delete a record:";
+        char name[30];fflush(stdin);
+        cin.getline(name,29);
+        s1.deleteData(name);
+        cout<<"\n\t\t Data is Successfully Deleted:";
+        getch();
+        break;
+    case 5:
+        cout<<"\n\n Enter Student Name to Update a record:";fflush(stdin);
+        cin.getline(name,29);
+        s1.updateData(name);
+        cout<<"\n\t\t Data is Successfully Updated:";
+        getch();
+        break;
+    case 6:
+        s1.ccolor(558);
+        cout<<"\n\t\t Thank You For using This Application:";
+        cout<<"\n\t\t Enter Any Key To Exit:-";
+        getch();
+        exit(0);
+        break;
+    default:
+        s1.ccolor(12);
+        cout<<"Invalid Input Try Again:";
+        getch();
+        }
 return 0;
 }
