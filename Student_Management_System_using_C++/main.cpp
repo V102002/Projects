@@ -219,14 +219,44 @@ using namespace std;
   }
   void student::deleteData(char *t)
   {
-    ifstream fi("student.txt",ios::app);
-    ofstream fo("student.txt",ios::app);
-    if (!fi){
+    ifstream fi("student.txt");
+    ofstream fo("temp.txt");
+    if (!fi|| !fo){
       ccolor(12);
       cout<<"Error, file not found";
       return;
     }
+    char temp_name[30],temp_Pname[30],temp_stdn[10];
+    int temp_roll,temp_age,temp_busno;
+    bool found=false;
 
+    //Read through the student.txt file
+    while (fi>>temp_roll>>ws && fi.getline(temp_name,30,'|') && //ws means removing whitespace
+    fi.getline(temp_Pname,30,'|') && fi.getline(temp_stdn,10,'|')
+    && fi>>temp_age>>ws && fi>>temp_busno>>ws){
+      if (strcmp(temp_name,t)==0){
+        found=true;
+        continue; //Skip the record we want to delete
+      }
+
+      //Writing the other records into temp.txt
+      fo<<temp_roll<<" "
+        <<temp_name<<"|"<<temp_Pname<<"|"<<temp_stdn<<"|"
+        <<temp_age<<" "<<temp_busno<<"\n";
+    }
+    fi.close();
+    fo.close();
+
+    remove("student.txt");
+    rename("temp.txt","student.txt");
+
+    if (found){
+      ccolor(12);
+      cout<<"Student deleted succesfully.\n";
+    }else{
+      ccolor(12);
+      cout<<"Student not found.\n";
+    }
     
   }
 int main(){
