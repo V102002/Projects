@@ -54,6 +54,8 @@ using namespace std;
 
     getch();
   }
+
+
   void student::ccolor(int clr)
   {
       HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -62,21 +64,24 @@ using namespace std;
 
   void student::loadingBar()
   {
-      for (int  i = 15; i <=100; i++){
-        system("cls");
-        ccolor(14);
-        cout<<"\n\n\n\n\n\n\n\t\t\t";
-        cout<<i<<"%%...Loading....\n\n\t\t";
-        cout<<" ";
-        for (int j = 0; j < i; j++){
-          cout<<" ";
-        }
-        Sleep(50); //Sleep for 50 millisecond
-        if (i==90 || i==50 || i==96 || i==83){
-          Sleep(50);
-        }
-      }
-      system("cls");
+    ccolor(14);
+    cout << "\n\n\n\n\n\n\n\t\t\tLoading...\n";
+    cout << "\t\t\t[";
+
+    int width = 50; // Width of the loading bar
+    for (int i = 0; i <= width; i++) {
+        int percent = (i * 100) / width;
+
+        // Print the loading bar progress
+        cout << "\r\t\t\t[";
+        for (int j = 0; j < i; j++) cout << "=";
+        for (int j = i; j < width; j++) cout << " ";
+        cout << "] " << percent << "%";
+
+        Sleep(50); // Delay
+    }
+    cout << "\n";
+    system("cls");
   }
   void student::login()
   {
@@ -88,30 +93,30 @@ using namespace std;
   }
   void student::getdata()
   {
-    fflush(stdin);
+    cin.ignore();
     cout<<"\t*****************************************************"<<endl;
 
-    cout<<"\t* Enter Student Name: ",cin.getline(name,29);fflush(stdin);
+    cout<<"\t* Enter Student Name: ",cin.getline(name,29);
     
     cout<<"\t*****************************************************"<<endl;
     
-    cout<<"\t* Enter Student Age: ",cin>>age;fflush(stdin);
+    cout<<"\t* Enter Student Age: ",cin>>age;cin.ignore();
     
     cout<<"\t*****************************************************"<<endl;
     
-    cout<<"\t* Enter Student Roll Number: ",cin>>Roll_no;fflush(stdin);
+    cout<<"\t* Enter Student Roll Number: ",cin>>Roll_no;cin.ignore();
     
     cout<<"\t*****************************************************"<<endl;
     
-    cout<<"\t* Enter Student Standard: ",cin.getline(stdn,9);fflush(stdin);
+    cout<<"\t* Enter Student Standard: ",cin.getline(stdn,9);
     
     cout<<"\t*****************************************************"<<endl;
     
-    cout<<"\t* Enter Parent's Name: ",cin.getline(Pname,29);fflush(stdin);
+    cout<<"\t* Enter Parent's Name: ",cin.getline(Pname,29);
     
     cout<<"\t*****************************************************"<<endl;
     
-    cout<<"\t* Enter Bus Number: ",cin>>busno;fflush(stdin);
+    cout<<"\t* Enter Bus Number: ",cin>>busno;cin.ignore();
     
     cout<<"\t*****************************************************"<<endl;
   }
@@ -365,7 +370,7 @@ int main(){
     default:
         s1.ccolor(12);
         cout<<"Invalid Input Try Again:";
-        getch();
+        cin.get();
         }
 return 0;
 }
