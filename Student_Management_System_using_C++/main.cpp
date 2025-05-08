@@ -23,7 +23,6 @@ class student {
     }
 public:
     void intro();
-    void ccolor(int);
     void loadingBar();
     void login();
     void getdata();
@@ -50,11 +49,6 @@ void student::intro() {
         <<"***************    STUDENT MONITORING SYSTEM     ********************\n"
         <<"_____________________________________________________________________\n\n";
     getch();
-}
-
-void student::ccolor(int clr) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, clr);
 }
 
 void student::loadingBar() {
