@@ -311,7 +311,6 @@ int main(){
   s1.loadingBar();
   s1.intro();
   s1.login();
-  s1.ccolor(929);
   int choice=0;
   while (choice!=6){
     s1.ccolor(929);
