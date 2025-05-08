@@ -312,7 +312,7 @@ int main(){
   s1.intro();
   s1.login();
   s1.ccolor(929);
-  int choice;
+  int choice=0;
   while (choice!=6){
     s1.ccolor(929);
     system("cls");
