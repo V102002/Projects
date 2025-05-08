@@ -141,7 +141,7 @@ using namespace std;
         cout<<"Error finding file";
         return 0;
       }
-      fout<<name<<" | "<<age<<" | "<<Roll_no<<" | "<<stdn<<" | "<<Pname<<" | "<<busno<<"\n";
+      fout<<Roll_no<<" | "<<name<<" | "<<Pname<<" | "<<stdn<<" | "<<age<<" | "<<busno<<"\n";
       fout.close();
       return 1;
     }
