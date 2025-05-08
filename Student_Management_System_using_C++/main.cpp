@@ -46,7 +46,6 @@ public:
 };
 
 void student::intro() {
-    ccolor(15);
     cout<<"*****************************************************************\n"
         <<"***************    STUDENT MONITORING SYSTEM     ********************\n"
         <<"_____________________________________________________________________\n\n";
@@ -59,7 +58,6 @@ void student::ccolor(int clr) {
 }
 
 void student::loadingBar() {
-    ccolor(14);
     cout << "\n\n\n\n\n\n\n\t\t\tLoading...\n";
     cout << "\t\t\t[";
     int width = 50;
@@ -76,7 +74,6 @@ void student::loadingBar() {
 }
 
 void student::login() {
-    ccolor(14);
     char ui[]="ASHFAQUE";
     char psw[]="3535";
     char gui[10],gpsw[10];
@@ -208,7 +205,6 @@ void student::deleteData(char *t) {
     ifstream fi("student.txt");
     ofstream fo("temp.txt");
     if (!fi|| !fo){
-        ccolor(12);
         cout<<"Error, file not found";
         return;
     }
@@ -238,10 +234,8 @@ void student::deleteData(char *t) {
     rename("temp.txt","student.txt");
 
     if (found) {
-        ccolor(12);
         cout<<"Student deleted successfully.\n";
     } else {
-        ccolor(12);
         cout<<"Student not found.\n";
     }
 }
@@ -296,7 +290,6 @@ int main() {
     s1.login();
     int choice=0;
     while (choice!=6) {
-        s1.ccolor(929);
         system("cls");
 
         cout<<"*****************************************************************\n";
@@ -344,13 +337,11 @@ int main() {
                 break;
             }
             case 6:
-                s1.ccolor(558);
                 cout<<"\n\t\t Thank You For using This Application:";
                 cout<<"\n\t\t Enter Any Key To Exit:-";
                 getch();
                 exit(0);
             default:
-                s1.ccolor(12);
                 cout<<"Invalid Input Try Again:";
                 cin.get();
         }
