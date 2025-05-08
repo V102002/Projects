@@ -243,7 +243,6 @@ using namespace std;
         found=true;
         continue; //Skip the record we want to delete
       }else{
-        found=false;
         //Writing the other records into temp.txt
         fo<<temp_roll<<" "
         <<temp_name<<"|"<<temp_Pname<<"|"<<temp_stdn<<"|"
