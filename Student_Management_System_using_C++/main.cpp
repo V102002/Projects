@@ -242,12 +242,13 @@ using namespace std;
       if (strcmp(temp_name,t)==0){
         found=true;
         continue; //Skip the record we want to delete
-      }
-
-      //Writing the other records into temp.txt
-      fo<<temp_roll<<" "
+      }else{
+        found=false;
+        //Writing the other records into temp.txt
+        fo<<temp_roll<<" "
         <<temp_name<<"|"<<temp_Pname<<"|"<<temp_stdn<<"|"
         <<temp_age<<" "<<temp_busno<<"\n";
+      }
     }
     fi.close();
     fo.close();
