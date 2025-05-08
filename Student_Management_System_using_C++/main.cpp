@@ -316,8 +316,8 @@ int main(){
   while (choice!=6){
     s1.ccolor(929);
     system("cls");
-  }
-  cout<<"*****************************************************************"<<"\n";
+  
+    cout<<"*****************************************************************"<<"\n";
     cout<<"***                                                           ***"<<"\n";
     cout<<"***              1. Insert Student record.                    ***"<<"\n";
     cout<<"***              2. View All Student record.                  ***"<<"\n";
@@ -372,5 +372,6 @@ int main(){
         cout<<"Invalid Input Try Again:";
         cin.get();
         }
+  }
 return 0;
 }
