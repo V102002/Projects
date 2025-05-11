@@ -25,3 +25,43 @@
 .navbar-left ul li{
     cursor: pointer;
 }
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.navbar-right .icon{
+    width: 20px;
+    cursor: pointer;
+}
+.navbar-profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.navbar-right .profile{
+    border-radius: 4px;
+    width: 35px;
+}
+.navbar .drop-down{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+    background: #191919;
+    padding: 18px 22px;
+    border-radius: 2px;
+    text-decoration: underline;
+    z-index: 1;
+    display: none;
+}
+.navbar .drop-down p{
+    font-size: 13px;
+    cursor: pointer;
+}
+.navbar-profile:hover .drop-down{
+    display: block;
+    
+}
