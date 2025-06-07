@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-
+import Button from './Button';
 const Hero = () => {
   // Keep track of what video is playing
   const [CurrentIndex,setCurrentIndex] = useState(1);
