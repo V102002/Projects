@@ -82,6 +82,8 @@ const Navbar = () => {
                   );
               })}
             </div>
+            
+            {/* Music Button */}
             <button className='ml-10 flex items-center space-x-0.5' onClick={toggleAudioIndicatior}>
               <audio ref={audioElementRef} className= "hidden" src="/audio/loop.mp3" loop/>
                 {/* Showing audio lines */}
