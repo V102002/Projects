@@ -5,7 +5,7 @@ import Search from './components/Search'
 
 //The Main Component
 const App=()=>{
-  
+  const [searchTerm,setSearchTerm]=useState('');
 
   return (
     <main>
@@ -19,7 +19,7 @@ const App=()=>{
           </h1>
         </header>
         
-        <Search/>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       </div>
     </main>
   )
