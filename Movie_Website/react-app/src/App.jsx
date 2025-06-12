@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Search from './components/Search'
 import Spinner from './components/Spinner'
+import MovieCard from './components/MovieCard'
 
 // Where can the site ask for the movies
 const API_BASE_URL='https://api.themoviedb.org/3/discover/movie';
@@ -87,7 +88,7 @@ const App=()=>{
           ):(
             <ul>
               {movieList.map((movie)=>(
-                <p key={movie.id} className='text-white'>{movie.title}</p>
+                <MovieCard key={movie.id} movie={movie}/>
               ))}
             </ul>
           )}
