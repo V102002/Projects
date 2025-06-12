@@ -6,7 +6,7 @@ import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard'
 
 // Where can the site ask for the movies
-const API_BASE_URL='https://api.themoviedb.org/3/discover/movie';
+const API_BASE_URL='https://api.themoviedb.org/3';
 
 // Get access to the API key
 const API_KEY= import.meta.env.VITE_TMDB_API_KEY;
@@ -28,13 +28,13 @@ const App=()=>{
   const [errorMessage,setErrorMessage]=useState('');
   const[isLoading,setIsLoading]=useState(false);
 
-  const fetchMovies= async ()=>{
+  const fetchMovies= async (query='')=>{
     //Loading the movies
     setIsLoading(true);
     setErrorMessage('');
     try{
-      //Fetching the movies
-      const endpoint=`${API_BASE_URL}?sort_by=popularity.desc`;
+      //Fetching the movies (if query exists, show the movie otherwise show popular ones)
+      const endpoint= query?`${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
       //Calling the API
       const response=await fetch(endpoint,API_OPTIONS); 
@@ -63,8 +63,8 @@ const App=()=>{
 
   //Fetching the movies at the start 
   useEffect(()=>{
-    fetchMovies();
-  },[])
+    fetchMovies(searchTerm);
+  },[searchTerm])
 
   return (
     <main>
