@@ -28,7 +28,11 @@ const App=()=>{
   // Displaying Error
   const [errorMessage,setErrorMessage]=useState('');
   const[isLoading,setIsLoading]=useState(false);
+  const [debouncedSearchTerm,setDebouncedSearchTerm]=useState('');
 
+  //Debounces the search term to prevent making too many API requests
+  //by making the user stop typing for 500ms 
+  useDebounce(()=>setDebouncedSearchTerm(searchTerm),500,[searchTerm])
   const fetchMovies= async (query='')=>{
     //Loading the movies
     setIsLoading(true);
@@ -64,8 +68,8 @@ const App=()=>{
 
   //Fetching the movies at the start 
   useEffect(()=>{
-    fetchMovies(searchTerm);
-  },[searchTerm])
+    fetchMovies(debouncedSearchTerm);
+  },[debouncedSearchTerm])
 
   return (
     <main>
