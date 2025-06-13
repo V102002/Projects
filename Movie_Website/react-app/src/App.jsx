@@ -30,6 +30,7 @@ const App=()=>{
   const [errorMessage,setErrorMessage]=useState('');
   const[isLoading,setIsLoading]=useState(false);
   const [debouncedSearchTerm,setDebouncedSearchTerm]=useState('');
+  const [trendingMovies, setTrendingMovies]=useState([]);
 
   //Debounces the search term to prevent making too many API requests
   //by making the user stop typing for 500ms 
@@ -66,7 +67,7 @@ const App=()=>{
       if (query && data.results.length>0) {
         await updateSearchCount(query, data.results[0])
       }
-      
+
     }catch(error){  
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies. Please try again later");
@@ -74,7 +75,13 @@ const App=()=>{
       setIsLoading(false);
     }
   }
-
+  const LoadTrendingMovies=async()=>{
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
   //Fetching the movies at the start 
   useEffect(()=>{
     fetchMovies(debouncedSearchTerm);
