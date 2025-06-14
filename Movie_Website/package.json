@@ -5,11 +5,11 @@
   "type": "module",
   "homepage": "https://V102002.github.io/Moodflix",
   "scripts": {
-    "predeploy": "npm run build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
