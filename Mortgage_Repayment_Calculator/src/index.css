@@ -1,2 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
 
+@theme{
+  --color-primary: hsl(202, 86%, 94%);
+  --color-right: hsl(202, 55%, 16%)
+}
+@layer base{
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: hsl(180, 1%, 81%);
+    font-size: 20px;
+  }
+  main{
+    @apply w-full h-dvh flex justify-center items-center bg-primary overflow-hidden 
+  }
+  .container{
+    @apply w-4/5 h-3/5 bg-white rounded-lg mx-30
+  }
+}
