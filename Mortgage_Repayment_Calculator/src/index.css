@@ -8,9 +8,11 @@
 @layer base{
   body{
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: hsl(180, 1%, 81%);
+    background: hsl(202, 86%, 94%);
     font-size: 20px;
+    overflow: hidden;
   }
+
   main{
     @apply w-full h-dvh flex justify-center items-center bg-primary overflow-hidden 
   }
