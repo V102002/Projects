@@ -8,11 +8,12 @@ import './App.css'
 
 function App() {
   
+  const [amount,setAmount]=useState('');
   const [selected,setSelected]=useState('');
   return (
     <main>
       <div className='container flex rounded-tr-3xl rounded-tl-3xl rounded-bl-3xl rounded-br-3xl h-fit '>
-        <div className="Left-form w-1/2 p-6 flex flex-col items-start">
+        <div className="Left-form w-1/2 px-10 py-6 flex flex-col items-start">
           <div className='w-full flex justify-between items-start'>
             <h1 className='text-left py-5 font-bold'>
               Mortgage Calculator
