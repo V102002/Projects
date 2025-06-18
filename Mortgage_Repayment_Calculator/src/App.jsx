@@ -2,11 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Input from './components/Input'
+import Type from './components/Type'
+import calculatorIcon from './assets/images/icon-calculator.svg';
 import './App.css'
 
 function App() {
   
-
+  const [selected,setSelected]=useState('');
   return (
     <main>
       <div className='container flex rounded-tr-3xl rounded-tl-3xl rounded-bl-3xl rounded-br-3xl h-fit '>
@@ -22,7 +24,7 @@ function App() {
 
           <div className="relative flex w-full">
             <span className='absolute top-1/7 left-0.3 bg-slate-100 p-2 px-4 font-semibold'>£</span>
-            <input className=' font-medium mt-2 border rounded w-full text-sm py-3 px-2 pl-15 z-2' type="number" step="1" />
+            <input className=' font-bold mt-2 border rounded w-full text-sm py-3 px-2 pl-15 z-2' type="number" step="1" />
           </div>
 
           <div className="term_interest mt-5 w-full flex gap-4">
@@ -30,8 +32,16 @@ function App() {
             <Input text={"%"} heading={"Interest Rate"}/>
           </div>
 
-          
+          <div className='w-full'>
+            <p className='text-sm mt-8 mb-3 font-semibold text-left'>Mortgage Type</p>
+            <Type type='Repayment' selected={selected} setSelected={setSelected}/>
+            <Type type='Interest Only' selected={selected} setSelected={setSelected}/>
+          </div>
 
+          <button className='flex mt-3 mb-2 gap-3 px-8 font-bold py-3 rounded-full cursor-pointer' style={{backgroundColor: 'var(--color-lime)'}}>
+            <img src={calculatorIcon} alt="Calculator" />
+            <p>Calculate Repayments</p>
+          </button>
 
         </div>
 
