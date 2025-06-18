@@ -3,7 +3,8 @@
 
 @theme{
   --color-primary: hsl(202, 86%, 94%);
-  --color-right: hsl(202, 55%, 16%)
+  --color-right: hsl(202, 55%, 16%);
+  --color-lime:hsl(61, 70%, 52%);
 }
 @layer base{
   body{
