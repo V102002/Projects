@@ -45,11 +45,23 @@ function App() {
 
         </div>
 
-        <div className='Right-form w-1/2  bg-slate-800 rounded-tr-3xl rounded-br-3xl rounded-bl-[80px]'>
-          <h1 className='text-left px-10 pt-10 font-bold text-white'>
+{/* ====================================================================================================================================================================== */}
+        
+        <div className='Right-form w-1/2 bg-slate-800 rounded-tr-3xl rounded-br-3xl rounded-bl-[80px]'>
+          <h1 className='text-left mx-10 pt-10 font-bold text-white'>
             Your results
           </h1>
-          <p className='text-sm px-10 py-2 text-left text-slate-400'>Your results are shown below based on the information you provided. To adjust the results, edit the form and click on 'calculate repayments' again</p>
+          <p className='text-sm mx-10 py-2 text-left text-slate-400'>Your results are shown below based on the information you provided. To adjust the results, edit the form and click on 'calculate repayments' again</p>
+
+          <div className='bg-slate-900 text-left border-t-[4px]  mt-8 mx-10 px-4 rounded-md py-2 text-gray-400' style={{borderColor:'var(--color-lime)'}}>
+            <p className='mx-5 text-sm mt-5'>Your monthly repayments</p>
+            <p className='mx-5 my-5 text-6xl font-semibold' style={{color:'var(--color-lime)'}}>£1,797.74</p>
+            <div className='bg-gray-600 h-px mx-4 mb-9'/>
+            <div className='mx-5 mb-8'>
+              <p className='text-sm mb-2'>Total you'll repay over the term</p>
+              <p className='font-bold text-white'>£539,322.94</p>
+            </div>
+          </div>
         </div>
 
       </div>
