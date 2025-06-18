@@ -9,7 +9,35 @@ import './App.css'
 function App() {
   
   const [amount,setAmount]=useState('');
+  const [term, setTerm]=useState('');
+  const [rate,setRate]=useState('');
+  const [total,setTotal]=useState('');
   const [selected,setSelected]=useState('');
+
+  const [error,setError]= useState({
+    amount:false,
+    term:false,
+    rate:false,
+    type:false,
+  })
+
+  const handleCalculation=()=>{
+    const newError={
+      amount:!amount,
+    term:!term,
+    rate:!rate,
+    type:!selected,
+    }
+    setError(newError)
+
+    if(Object.values(newError).some(Boolean)) return
+
+    const principal=parseInt(amount);
+    const rate=parseFloat(rate);
+
+
+  }
+
   return (
     <main>
       <div className='container flex rounded-tr-3xl rounded-tl-3xl rounded-bl-3xl rounded-br-3xl h-fit '>
@@ -25,7 +53,7 @@ function App() {
 
           <div className="relative flex w-full">
             <span className='absolute top-1/7 left-0.3 bg-slate-100 p-2 px-4 font-semibold'>£</span>
-            <input className=' font-bold mt-2 border rounded w-full text-sm py-3 px-2 pl-15 z-2' type="number" step="1" />
+            <input className=' font-bold mt-2 border rounded w-full text-sm py-3 px-2 pl-15 z-2' type="number" step="1" min="0"/>
           </div>
 
           <div className="term_interest mt-5 w-full flex gap-4">
