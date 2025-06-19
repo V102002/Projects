@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Input from './components/Input';
 import Type from './components/Type';
 import calculatorIcon from './assets/images/icon-calculator.svg';
-import './App.css';
+import './index.css';
 
 function App() {
   const [amount, setAmount] = useState('');
@@ -50,75 +50,40 @@ function App() {
   };
 
   return (
-    <main>
-      <div className='container flex rounded-3xl h-fit'>
-        
-        {/* LEFT FORM */}
-        <div className='Left-form w-1/2 px-10 py-6 flex flex-col items-start'>
-          <div className='w-full flex justify-between items-start'>
-            <h1 className='text-left py-5 font-bold'>Mortgage Calculator</h1>
-            <a
-              className='inline-block px-3 py-1 mt-5 text-sm underline cursor-pointer'
-              onClick={() => {
-                setAmount('');
-                setTerm('');
-                setRate('');
-                setSelected('');
-                setTotal('');
-                setError({
-                  amount: false,
-                  term: false,
-                  rate: false,
-                  type: false,
-                });
-              }}
-            >
-              Clear All
-            </a>
+    <main className='h-screen overflow-auto'>
+      <div className='container w-full min-h-screen'>
+        <div className="left-form ">
+          <div className='flex flex-col gap-1 mt-5 mx-4'>
+            <h1 className='font-bold text-xl'>Mortgage Calculator</h1>
+            <a className='underline text-[0.8rem] ' href="">Clear All</a>
           </div>
 
-          <p className='text-sm text-left font-semibold'>Mortgage Amount</p>
-          <div className='relative flex w-full'>
-            <span className='absolute top-1/7 left-0.3 bg-slate-100 p-2 px-4 font-semibold'>£</span>
-            <input
-              className={`font-bold mt-2 border rounded w-full text-sm py-3 px-2 pl-15 z-2 ${
-                error.amount ? 'border-red-500' : ''
-              }`}
-              type='number'
-              step='1'
-              min='0'
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
+          <div className='amount relative mt-5 mx-4'>
+            <p className='relative text-slate-600 text-[0.8rem] mb-2 font-semibold'>Mortgage Amount</p>
+            <div className='relative'>
+              <span className='absolute rounded-tl rounded-bl z-0 bg-slate-100 p-[0.25rem] px-4 top-1/2 h-full py-2 -translate-y-1/2 left-0 bottom-0 font-semibold'>£</span>
+              <input className='border rounded relative z-10 w-full p-2 pl-10 font-semibold' type='number' step='1' value={amount} onChange={(e)=>setAmount(e.target.value)} />
+            </div>
           </div>
           {error.amount && <p className='text-red-500 text-sm mt-1'>This field is required</p>}
 
-          <div className='term_interest mt-5 w-full flex gap-4'>
-            <Input
-              text={'years'}
-              heading={'Mortgage Term'}
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
-              error={error.term}
-            />
-            <Input
-              text={'%'}
-              heading={'Interest Rate'}
-              value={rate}
-              onChange={(e) => setRate(e.target.value)}
-              error={error.rate}
-            />
+          <div className="term_interest lg:flex lg:gap-4 mt-5 mx-4">
+            <Input heading={'Mortgage Term'} value={term} onChange={(e) => setTerm(e.target.value)}
+              error={error.term} text={'years'} />
+            <Input heading={'Interest Rate'} value={rate} onChange={(e) => setRate(e.target.value)}
+              error={error.rate} text={'%'} />
           </div>
 
-          <div className='w-full'>
-            <p className='text-sm mt-8 mb-3 font-semibold text-left'>Mortgage Type</p>
+          <div className='mx-4'>
+            <p className='text-sm mt-7 mb-2 text-slate-600 font-semibold'>Mortgage Type</p>
             <Type type='Repayment' selected={selected} setSelected={setSelected} error={error.type} />
             <Type type='Interest Only' selected={selected} setSelected={setSelected} error={error.type} />
             {error.type && <p className='text-red-500 text-sm mt-1'>This field is required</p>}
           </div>
 
+
           <button
-            className='flex mt-3 mb-2 gap-3 px-8 font-bold py-3 rounded-full cursor-pointer'
+            className='flex mt-5 mx-4 mb-7 gap-2 px-8 font-bold py-3 rounded-full cursor-pointer lg:gap-3'
             style={{ backgroundColor: 'var(--color-lime)' }}
             onClick={handleCalculation}
           >
@@ -127,26 +92,18 @@ function App() {
           </button>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className='Right-form w-1/2 bg-slate-800 rounded-tr-3xl rounded-br-3xl rounded-bl-[80px]'>
-          <h1 className='text-left mx-10 pt-10 font-bold text-white '>Your results</h1>
-          <p className='text-sm mx-10 py-2 text-left text-slate-400'>
-            Your results are shown below based on the information you provided. To adjust the results, edit the form and click on 'calculate repayments' again.
-          </p>
+        <div className='right_form bg-slate-800 w-full lg:w-1/2 pt-8 pb-6'>
+          <div className='mx-4'>
+            <h1 className='text-white font-bold mb-3'>Your results</h1>
+          <p className='text-sm text-slate-400 mb-6'>Your results are shown below based on the information provided. To adjust the results, edit the form and click "calculate repayments" again</p>
+          </div>
 
-          <div
-            className='bg-slate-900 text-left border-t-[4px] mt-8 mx-10 px-4 rounded-md py-2 text-gray-400'
-            style={{ borderColor: 'var(--color-lime)' }}
-          >
-            <p className='mx-5 text-sm mt-5'>Your monthly repayments</p>
-            <p className='mx-5 my-5 text-6xl font-semibold' style={{ color: 'var(--color-lime)' }}>
-              £{total?.monthly ?? '0.00'}
-            </p>
-            <div className='bg-gray-600 h-px mx-4 mb-9' />
-            <div className='mx-5 mb-8'>
-              <p className='text-sm mb-2'>Total you'll repay over the term</p>
-              <p className='font-bold text-white'>£{total?.total ?? '0.00'}</p>
-            </div>
+          <div className='bg-slate-900 mx-4 mt-4 text-left border-t-[4px] rounded-md' style={{ borderColor: 'var(--color-lime)' }}>
+            <p className='text-slate-500 text-sm pt-5 mx-4 mb-3'>Your monthly repayments</p>
+            <p className='mx-4 text-4xl font-semibold mb-4 lg:text-6xl' style={{ color: 'var(--color-lime)' }}>£{total?.monthly ?? '0.00'}</p>
+            <div className='bg-gray-600 h-px mx-4 mb-5 lg:mb-9' />
+            <p className='text-sm mb-2 mx-4 text-slate-500'>Total you'll repay over the term</p>
+            <p className='font-bold text-white mx-4 pb-4'>£{total?.total ?? '0.00'}</p>
           </div>
         </div>
       </div>

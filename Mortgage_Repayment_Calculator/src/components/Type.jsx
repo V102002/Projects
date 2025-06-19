@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Type = ({type,selected,setSelected}) => {
   return (
     <div>
-        <label className={`flex items-center px-2 py-3 mb-3 border rounded cursor-pointer 
+        <label className={`flex items-center px-2 py-2.5 mb-2 border rounded cursor-pointer 
           ${selected === type ? 'bg-yellow-100 border-yellow-400' : 'border-gray-300'}`}>
           <input type="radio"
          value={type}
