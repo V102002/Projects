@@ -61,8 +61,8 @@ function App() {
           <div className='amount relative mt-5 mx-4'>
             <p className='relative text-slate-600 text-[0.8rem] mb-2 font-semibold'>Mortgage Amount</p>
             <div className='relative'>
-              <span className='absolute rounded-tl rounded-bl z-0 bg-slate-100 p-[0.25rem] px-4 top-1/2 h-full py-2 -translate-y-1/2 left-0 bottom-0 font-semibold'>£</span>
-              <input className='border rounded relative z-10 w-full p-2 pl-10 font-semibold' type='number' step='1' value={amount} onChange={(e)=>setAmount(e.target.value)} />
+              <span className='absolute rounded-tl rounded-bl z-0 text-slate-700 bg-slate-300 p-[0.25rem] px-4 top-1/2 h-full py-2 -translate-y-1/2 left-0 bottom-0 font-semibold'>£</span>
+              <input className='border rounded relative z-10 w-full p-2 pl-13 text-slate-700 font-bold' type='number' step='1' value={amount} onChange={(e)=>setAmount(e.target.value)} />
             </div>
           </div>
           {error.amount && <p className='text-red-500 text-sm mt-1'>This field is required</p>}
