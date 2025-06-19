@@ -4,7 +4,7 @@ This is a re-creation of a site from zentry.com using React.js, TailwindCSS and 
 # Live site
 https://v102002.github.io/Cool-Website/
 
-#How to Use
+# How to Use
 1. Download the the code
 2. Make sure to download Vite and npm
 3. Go to the terminal and run the commands `npm run dev`
