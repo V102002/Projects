@@ -50,12 +50,25 @@ function App() {
   };
 
   return (
-    <main className='h-screen overflow-auto'>
-      <div className='container w-full min-h-screen'>
-        <div className="left-form ">
+    <main className='h-screen overflow-auto bg-slate-100 lg:overflow-hidden'>
+      <div className='w-full max-w-4xl mx-auto lg:flex lg:rounded-[30px] overflow-hidden shadow-lg bg-white lg:mt-15'>
+        <div className="left-form bg-white lg:w-1/2">
           <div className='flex flex-col gap-1 mt-5 mx-4'>
             <h1 className='font-bold text-xl'>Mortgage Calculator</h1>
-            <a className='underline text-[0.8rem] ' href="">Clear All</a>
+            <a className='underline text-[0.8rem] cursor-pointer' onClick={()=>{
+              setAmount('');
+              setTerm('');
+              setRate('');
+              setSelected('');
+              setTotal('');
+              setError({
+                amount:false,
+                term:false,
+                rate:false,
+                type:false,
+              });
+            }}
+            >Clear All</a>
           </div>
 
           <div className='amount relative mt-5 mx-4'>
@@ -65,7 +78,7 @@ function App() {
               <input className='border rounded relative z-10 w-full p-2 pl-13 text-slate-700 font-bold' type='number' step='1' value={amount} onChange={(e)=>setAmount(e.target.value)} />
             </div>
           </div>
-          {error.amount && <p className='text-red-500 text-sm mt-1'>This field is required</p>}
+          {error.amount && <p className='text-red-500 mx-4 text-sm mt-1'>This field is required</p>}
 
           <div className="term_interest lg:flex lg:gap-4 mt-5 mx-4">
             <Input heading={'Mortgage Term'} value={term} onChange={(e) => setTerm(e.target.value)}
@@ -92,16 +105,16 @@ function App() {
           </button>
         </div>
 
-        <div className='right_form bg-slate-800 w-full lg:w-1/2 pt-8 pb-6'>
+        <div className='right_form bg-slate-800 w-full lg:w-1/2 pt-8 pb-6 px-5 flex flex-col lg:justify-between lg:rounded-bl-[80px]'>
           <div className='mx-4'>
             <h1 className='text-white font-bold mb-3'>Your results</h1>
           <p className='text-sm text-slate-400 mb-6'>Your results are shown below based on the information provided. To adjust the results, edit the form and click "calculate repayments" again</p>
           </div>
 
-          <div className='bg-slate-900 mx-4 mt-4 text-left border-t-[4px] rounded-md' style={{ borderColor: 'var(--color-lime)' }}>
+          <div className='bg-slate-900 mx-4 mt-4 text-left border-t-[4px] rounded-md lg:mb-15' style={{ borderColor: 'var(--color-lime)' }}>
             <p className='text-slate-500 text-sm pt-5 mx-4 mb-3'>Your monthly repayments</p>
-            <p className='mx-4 text-4xl font-semibold mb-4 lg:text-6xl' style={{ color: 'var(--color-lime)' }}>£{total?.monthly ?? '0.00'}</p>
-            <div className='bg-gray-600 h-px mx-4 mb-5 lg:mb-9' />
+            <p className='mx-4 text-4xl font-semibold mb-4 lg:mb-7 lg:text-6xl' style={{ color: 'var(--color-lime)' }}>£{total?.monthly ?? '0.00'}</p>
+            <div className='bg-gray-600 h-px mx-4 mb-5 lg:mb-7' />
             <p className='text-sm mb-2 mx-4 text-slate-500'>Total you'll repay over the term</p>
             <p className='font-bold text-white mx-4 pb-4'>£{total?.total ?? '0.00'}</p>
           </div>
