@@ -9,7 +9,7 @@ https://v102002.github.io/Cool-Website/
   2. TailwindCSS
   3. GSAP (GreenSock Animation Platform)
 # How to Use
-1. Download the the code
+1. Clone the repository to your local machine
 2. Make sure to download Vite and npm
 3. Go to the terminal and run the commands `npm run dev`
 4. You will get a localhost link, click on it and the website will be displayed in your browser
